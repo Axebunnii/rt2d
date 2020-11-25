@@ -15,24 +15,21 @@ MyScene::MyScene() : Scene()
 
 	// start the timer.
 	t.start();
+	pt.start();
 
 	// create a single instance of MyEntity in the middle of the screen.
 	// the Sprite is added in Constructor of MyEntity.
 	myentity = new MyEntity();
 	myentity->position = Point2(std::rand()%SWIDTH, std::rand()%SHEIGHT);
 
-	/*float ranx = (rand() % 1280) + 1;
-	float rany = (rand() % 720) + 1;
-	myentity->position = Point2(ranx, rany);*/
-
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(myentity);
 
 	platform = new Platform();
-	platform->position = Point2(100, 200);
+	platform->position = Point2(SWIDTH, std::rand() % SHEIGHT);
 
-
+	this->addChild(platform);
 }
 
 
@@ -43,6 +40,9 @@ MyScene::~MyScene()
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete myentity;
+
+	this->removeChild(platform);
+	delete platform;
 }
 
 void MyScene::update(float deltaTime)
@@ -72,4 +72,24 @@ void MyScene::update(float deltaTime)
 		myentity->sprite()->color = Color::rotate(color, 0.10f);
 		t.start();
 	}
+
+	/*int randomNum = std::rand() % 200;
+	if (randomNum >= 199) {
+		platform = new Platform();
+		platform->position = Point2(SWIDTH, std::rand() % SHEIGHT);
+
+		this->addChild(platform);
+	}*/
+
+	float time = 0.7;
+	std::cout << "Time: " << time << std::endl;
+	std::cout << "seconds: " << pt.seconds() << std::endl;
+	if (pt.seconds() > time) {
+		pt.start();
+
+		platform = new Platform();
+		platform->position = Point2(SWIDTH + 100, std::rand() % SHEIGHT + SHEIGHT/4);
+
+		this->addChild(platform);
+	}	
 }

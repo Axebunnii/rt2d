@@ -33,6 +33,7 @@ private:
 	MyEntity* myentity;
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
+	Timer pt;
 
 	Platform* platform;
 };

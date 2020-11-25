@@ -1,8 +1,10 @@
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
+#include <rt2d/entity.h>
+
 /// @brief The MyEntity class is the Entity implementation.
-class Platform : public Platform
+class Platform : public Entity
 {
 public:
 	/// @brief Constructor
