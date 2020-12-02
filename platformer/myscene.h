@@ -14,6 +14,7 @@
 #include "myentity.h"
 #include "platform.h"
 #include "player.h"
+#include "collision.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene

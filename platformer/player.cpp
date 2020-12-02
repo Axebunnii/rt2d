@@ -6,8 +6,8 @@
 
 Player::Player() : Entity()
 {
-	this->addSprite("assets/square.tga");
-	this->sprite()->color = BLUE;
+	/*this->addSprite("assets/square.tga");
+	this->sprite()->color = BLUE;*/
 }
 
 Player::~Player()
@@ -18,5 +18,5 @@ Player::~Player()
 void Player::update(float deltaTime)
 {
 	//if (no collision)
-	this->position += Point(0, 0.5);
+	//this->position += Point(0, 0.5);
 }

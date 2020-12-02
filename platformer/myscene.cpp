@@ -8,7 +8,6 @@
 #include <sstream>
 
 #include "myscene.h"
-#include "collision.h"
 
 MyScene::MyScene() : Scene()
 {
@@ -21,6 +20,14 @@ MyScene::MyScene() : Scene()
 	//player
 	player = new Player();
 	player->position = Point2(SWIDTH/2, SHEIGHT/2);
+
+	Line s1;
+	s1.addPoint(0, 0);
+	s1.addPoint(75, 0);
+	s1.addPoint(75, 100);
+	s1.addPoint(0, 100);
+	s1.addPoint(0, 0);
+	player->addLine(&s1);
 
 	this->addChild(player);
 }
@@ -54,18 +61,29 @@ void MyScene::update(float deltaTime)
 		platform = new Platform();
 		platform->position = Point2(SWIDTH + 100, std::rand() % SHEIGHT/3 + SHEIGHT / 4);
 
+		Line s2;
+		s2.addPoint(125, -25);
+		s2.addPoint(-125, -25);
+		s2.addPoint(-125, 25);
+		s2.addPoint(125, 25);
+		s2.addPoint(125, -25);
+		platform->addLine(&s2);
+	
+		platform->line()->color = BLACK;
+		//platform rect
+		Rectangle rect2 = Rectangle(platform->position.x, platform->position.y, 1, 1);
+		
 		this->addChild(platform);
 		platforms.push_back(platform);
-	}
-	
-	
-	//player collider
-	/*Rectangle rect1 = Rectangle(player->position.x, player->position.y, 50, 100);
-	//platform collider
-	Rectangle rect2 = Rectangle(platform->position.x, platform->position.y, 50, 100);
 
-	//checks if they collide with each other
-	if (Collider::rectangle2rectangle(rect1, rect2)) {
+	}
+	//player rect
+	Rectangle rect1 = Rectangle(player->position.x, player->position.y, 1, 1);
+	player->line()->color = BLUE;
+
+	/*if (Collision::rectangle2rectangle(rect1, rect2)) {
 		std::cout << "colliding" << std::endl;
+		player->line()->color = RED;
+		platform->line()->color = RED;
 	}*/
 }

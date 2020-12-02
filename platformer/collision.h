@@ -18,7 +18,7 @@ struct Rectangle {
 	}
 };
 
-class Collider
+class Collision
 {
 public:
 	// AABB
@@ -31,7 +31,7 @@ public:
 
 private:
 	// Disallow creating an instance of this object
-	Collider() {}
+	Collision() {}
 };
 
 #endif /* COLLISION_H */
