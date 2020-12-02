@@ -8,6 +8,7 @@
 #include <sstream>
 
 #include "myscene.h"
+#include "collision.h"
 
 MyScene::MyScene() : Scene()
 {
@@ -16,33 +17,24 @@ MyScene::MyScene() : Scene()
 	// start the timer.
 	t.start();
 	pt.start();
+	
+	//player
+	player = new Player();
+	player->position = Point2(SWIDTH/2, SHEIGHT/2);
 
-	// create a single instance of MyEntity in the middle of the screen.
-	// the Sprite is added in Constructor of MyEntity.
-	myentity = new MyEntity();
-	myentity->position = Point2(std::rand()%SWIDTH, std::rand()%SHEIGHT);
-
-	// create the scene 'tree'
-	// add myentity to this Scene as a child.
-	this->addChild(myentity);
-
-	platform = new Platform();
-	platform->position = Point2(SWIDTH, std::rand() % SHEIGHT);
-
-	this->addChild(platform);
+	this->addChild(player);
 }
 
 
 MyScene::~MyScene()
 {
-	// deconstruct and delete the Tree
-	this->removeChild(myentity);
-
-	// delete myentity from the heap (there was a 'new' in the constructor)
-	delete myentity;
-
-	this->removeChild(platform);
-	delete platform;
+	this->removeChild(player);
+	delete player;
+	
+	/*for (int i = 0; i <= platforms.size(); i++) {
+		this->removeChild(platforms[i]);
+		delete platforms[i];
+	}*/
 }
 
 void MyScene::update(float deltaTime)
@@ -54,42 +46,26 @@ void MyScene::update(float deltaTime)
 		this->stop();
 	}
 
-	// ###############################################################
-	// Spacebar scales myentity
-	// ###############################################################
-	if (input()->getKeyDown(KeyCode::Space)) {
-		myentity->scale = Point(0.5f, 0.5f);
-	}
-	if (input()->getKeyUp(KeyCode::Space)) {
-		myentity->scale = Point(1.0f, 1.0f);
-	}
-
-	// ###############################################################
-	// Rotate color
-	// ###############################################################
-	if (t.seconds() > 0.0333f) {
-		RGBAColor color = myentity->sprite()->color;
-		myentity->sprite()->color = Color::rotate(color, 0.10f);
-		t.start();
-	}
-
-	/*int randomNum = std::rand() % 200;
-	if (randomNum >= 199) {
-		platform = new Platform();
-		platform->position = Point2(SWIDTH, std::rand() % SHEIGHT);
-
-		this->addChild(platform);
-	}*/
-
-	float time = 0.7;
-	std::cout << "Time: " << time << std::endl;
-	std::cout << "seconds: " << pt.seconds() << std::endl;
-	if (pt.seconds() > time) {
+	//std::cout << "Time: " << randomTime << std::endl;
+	//std::cout << "seconds: " << pt.seconds() << std::endl;
+	if (pt.seconds() > randomTime) {
 		pt.start();
 
 		platform = new Platform();
-		platform->position = Point2(SWIDTH + 100, std::rand() % SHEIGHT + SHEIGHT/4);
+		platform->position = Point2(SWIDTH + 100, std::rand() % SHEIGHT/3 + SHEIGHT / 4);
 
 		this->addChild(platform);
-	}	
+		platforms.push_back(platform);
+	}
+	
+	
+	//player collider
+	/*Rectangle rect1 = Rectangle(player->position.x, player->position.y, 50, 100);
+	//platform collider
+	Rectangle rect2 = Rectangle(platform->position.x, platform->position.y, 50, 100);
+
+	//checks if they collide with each other
+	if (Collider::rectangle2rectangle(rect1, rect2)) {
+		std::cout << "colliding" << std::endl;
+	}*/
 }

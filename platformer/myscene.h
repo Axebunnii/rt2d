@@ -13,6 +13,7 @@
 
 #include "myentity.h"
 #include "platform.h"
+#include "player.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -35,7 +36,11 @@ private:
 	Timer t;
 	Timer pt;
 
+	std::vector<Platform*> platforms;
 	Platform* platform;
+	Player* player;
+
+	float randomTime = std::rand() % 5;
 };
 
 #endif /* SCENE00_H */

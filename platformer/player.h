@@ -1,16 +1,16 @@
-#ifndef PLATFORM_H
-#define PLATFORM_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include <rt2d/entity.h>
 
 /// @brief The MyEntity class is the Entity implementation.
-class Platform : public Entity
+class Player : public Entity
 {
 public:
 	/// @brief Constructor
-	Platform();
+	Player();
 	/// @brief Destructor
-	virtual ~Platform();
+	virtual ~Player();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
@@ -19,9 +19,8 @@ public:
 
 private:
 	/* add your private declarations */
-
-	bool isdeleted = false;
+	
 
 };
 
-#endif /* PLATFORM_H */
+#endif /* PLAYER_H */
