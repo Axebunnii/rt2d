@@ -173,7 +173,6 @@ ENDIF()
 IF(MAKE_PLATFORMER)
 	add_executable(platformer
 		platformer/main.cpp
-		platformer/myentity.cpp
 		platformer/myentity.h
 		platformer/myscene.cpp
 		platformer/myscene.h
@@ -182,6 +181,7 @@ IF(MAKE_PLATFORMER)
 		platformer/player.cpp
 		platformer/player.h
 		platformer/collision.h
+		platformer/vector.h
 	)
 	target_link_libraries(platformer
 		${ALL_GRAPHICS_LIBS}

@@ -8,6 +8,18 @@ Platform::Platform() : Entity()
 {
 	this->addSprite("assets/test.tga");
 	this->sprite()->color = RED;
+
+	Line s2;
+	s2.addPoint(125, -25);
+	s2.addPoint(-125, -25);
+	s2.addPoint(-125, 25);
+	s2.addPoint(125, 25);
+	s2.addPoint(125, -25);
+	this->addLine(&s2);
+
+	this->line()->color = BLACK;
+	
+	Rectangle rectP = Rectangle(this->position.x, this->position.y, 1, 1);
 }
 
 Platform::~Platform()
@@ -27,4 +39,3 @@ void Platform::update(float deltaTime)
 		std::cout << "isdeleted = true" << std::endl;
 	}*/
 }
-

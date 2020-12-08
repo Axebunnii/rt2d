@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include <rt2d/entity.h>
+#include "collision.h"
+#include "platform.h";
 
 /// @brief The MyEntity class is the Entity implementation.
 class Player : public Entity
@@ -17,10 +19,11 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
+	virtual void CheckCollider();
+
 private:
 	/* add your private declarations */
-	
-
+	bool isColliding;
 };
 
 #endif /* PLAYER_H */

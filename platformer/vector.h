@@ -1,17 +1,24 @@
-#ifndef PLATFORM_H
-#define PLATFORM_H
+#ifndef VECTOR_H
+#define VECTOR_H
 
 #include <rt2d/entity.h>
-#include "collision.h"
 
 /// @brief The MyEntity class is the Entity implementation.
-class Platform : public Entity
+class Vector : public Entity
 {
 public:
 	/// @brief Constructor
-	Platform();
+	Vector();
 	/// @brief Destructor
-	virtual ~Platform();
+	virtual ~Vector();
+
+	static bool Vector2(float x, float y) {
+
+	}
+
+	static bool AddGravity() {
+
+	}
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
@@ -21,8 +28,7 @@ public:
 private:
 	/* add your private declarations */
 
-	bool isdeleted = false;
 
 };
 
-#endif /* PLATFORM_H */
+#endif /* VECTOR_H */
