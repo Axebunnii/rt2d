@@ -40,5 +40,5 @@ void Platform::update(float deltaTime)
 	rect.x = this->position.x;
 	rect.y = this->position.y;
 
-	std::cout << rect.x << std::endl;
+	//std::cout << rect.x << std::endl;
 }

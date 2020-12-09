@@ -57,7 +57,7 @@ void MyScene::update(float deltaTime)
 		platforms.push_back(platform);
 	}
 
-	for (int i = 0; i <= platforms.size(); i++) {
+	for (int i = 0; i < platforms.size(); i++) {
 		player->CheckCollision(platforms[i]);
 	}
 }

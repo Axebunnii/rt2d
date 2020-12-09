@@ -3,7 +3,7 @@
 
 #include <rt2d/entity.h>
 #include "collision.h"
-#include "platform.h";
+#include "platform.h"
 
 /// @brief The MyEntity class is the Entity implementation.
 class Player : public Entity

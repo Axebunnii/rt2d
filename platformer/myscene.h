@@ -11,7 +11,6 @@
 
 #include <rt2d/scene.h>
 
-#include "myentity.h"
 #include "platform.h"
 #include "player.h"
 #include "collision.h"
@@ -31,7 +30,6 @@ public:
 	virtual void update(float deltaTime);
 
 private:
-	MyEntity* myentity;
 
 	Timer t;
 	Timer pt;
