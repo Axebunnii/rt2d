@@ -16,7 +16,12 @@ MyScene::MyScene() : Scene()
 	// start the timer.
 	t.start();
 	pt.start();
-	
+
+	background = new Background();
+	background->position = Point2(SWIDTH/2, SHEIGHT/2);
+
+	this->addChild(background);
+
 	//player
 	player = new Player();
 	player->position = Point2(SWIDTH/2, SHEIGHT/2);
@@ -27,13 +32,16 @@ MyScene::MyScene() : Scene()
 
 MyScene::~MyScene()
 {
+	this->removeChild(background);
+	delete background;
+
 	this->removeChild(player);
 	delete player;
 	
-	/*for (int i = 0; i <= platforms.size(); i++) {
+	for (int i = 0; i < platforms.size(); i++) {
 		this->removeChild(platforms[i]);
 		delete platforms[i];
-	}*/
+	}
 }
 
 void MyScene::update(float deltaTime)
@@ -45,8 +53,6 @@ void MyScene::update(float deltaTime)
 		this->stop();
 	}
 
-	//std::cout << "Time: " << randomTime << std::endl;
-	//std::cout << "seconds: " << pt.seconds() << std::endl;
 	if (pt.seconds() > randomTime) {
 		pt.start();
 

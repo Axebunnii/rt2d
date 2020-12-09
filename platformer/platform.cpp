@@ -7,7 +7,6 @@
 Platform::Platform() : Entity()
 {
 	this->addSprite("assets/test.tga");
-	this->sprite()->color = RED;
 
 	Line s2;
 	s2.addPoint(125, -25);
@@ -17,7 +16,7 @@ Platform::Platform() : Entity()
 	s2.addPoint(125, -25);
 	this->addLine(&s2);
 
-	//this->line()->color = BLACK;
+	this->line()->color = BLACK;
 }
 
 Platform::~Platform()

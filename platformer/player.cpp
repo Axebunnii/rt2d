@@ -48,10 +48,8 @@ void Player::update(float deltaTime)
 void Player::CheckCollision(Platform* p) {
 
 	if (Collision::rectangle2rectangle(rect, p->rect)) {
-		std::cout << "colliding" << std::endl;
-		//isColliding = true;
+		isColliding = true;
+		this->line()->color = RED;
 	}
-	else {
-		//isColliding = false;
-	}
+	//std::cout << isColliding << std::endl;
 }

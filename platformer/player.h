@@ -22,6 +22,7 @@ public:
 	void CheckCollision(Platform* p);
 
 
+
 private:
 	/* add your private declarations */
 	bool isColliding = false;

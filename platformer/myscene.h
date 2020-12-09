@@ -14,6 +14,7 @@
 #include "platform.h"
 #include "player.h"
 #include "collision.h"
+#include "background.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -35,6 +36,7 @@ private:
 	Timer pt;
 
 	std::vector<Platform*> platforms;
+	Background* background;
 	Player* player;
 
 	float randomTime = std::rand() % 5;

@@ -181,7 +181,8 @@ IF(MAKE_PLATFORMER)
 		platformer/player.cpp
 		platformer/player.h
 		platformer/collision.h
-		platformer/vector.h
+		platformer/background.cpp
+		platformer/background.h
 	)
 	target_link_libraries(platformer
 		${ALL_GRAPHICS_LIBS}

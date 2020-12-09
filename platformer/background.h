@@ -1,24 +1,16 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#ifndef BACKGROUND_H
+#define BACKGROUND_H
 
 #include <rt2d/entity.h>
 
 /// @brief The MyEntity class is the Entity implementation.
-class Vector : public Entity
+class Background : public Entity
 {
 public:
 	/// @brief Constructor
-	Vector();
+	Background();
 	/// @brief Destructor
-	virtual ~Vector();
-
-	static bool Vector2(float x, float y) {
-
-	}
-
-	static bool AddGravity() {
-
-	}
+	virtual ~Background();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
@@ -27,8 +19,6 @@ public:
 
 private:
 	/* add your private declarations */
-
-
 };
 
-#endif /* VECTOR_H */
+#endif /* BACKGROUND_H */
