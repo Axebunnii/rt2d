@@ -17,9 +17,7 @@ Platform::Platform() : Entity()
 	s2.addPoint(125, -25);
 	this->addLine(&s2);
 
-	this->line()->color = BLACK;
-	
-	Rectangle rectP = Rectangle(this->position.x, this->position.y, 1, 1);
+	//this->line()->color = BLACK;
 }
 
 Platform::~Platform()
@@ -38,4 +36,9 @@ void Platform::update(float deltaTime)
 		isdeleted = true;
 		std::cout << "isdeleted = true" << std::endl;
 	}*/
+
+	rect.x = this->position.x;
+	rect.y = this->position.y;
+
+	std::cout << rect.x << std::endl;
 }

@@ -19,11 +19,13 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
-	virtual void CheckCollider();
+	void CheckCollision(Platform* p);
+
 
 private:
 	/* add your private declarations */
-	bool isColliding;
+	bool isColliding = false;
+	Rectangle rect = Rectangle(this->position.x, this->position.y, 150, 200);
 };
 
 #endif /* PLAYER_H */

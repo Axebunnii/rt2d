@@ -50,27 +50,14 @@ void MyScene::update(float deltaTime)
 	if (pt.seconds() > randomTime) {
 		pt.start();
 
-		platform = new Platform();
+		Platform* platform = new Platform();
 		platform->position = Point2(SWIDTH + 100, std::rand() % SHEIGHT/3 + SHEIGHT / 4);
-
-		//platform rect
-		Rectangle rect2 = Rectangle(platform->position.x, platform->position.y, 1, 1);
 		
 		this->addChild(platform);
 		platforms.push_back(platform);
-
-		
-
-
-		
 	}
-	//player rect
-	Rectangle rect1 = Rectangle(player->position.x, player->position.y, 1, 1);
 
-	/*if (Collision::rectangle2rectangle(rect1, rect2)) {
-		std::cout << "colliding" << std::endl;
-		player->line()->color = RED;
-		platform->line()->color = RED;
-	}*/
-
+	for (int i = 0; i <= platforms.size(); i++) {
+		player->CheckCollision(platforms[i]);
+	}
 }
