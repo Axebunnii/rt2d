@@ -14,7 +14,7 @@ Player::Player() : Entity()
 	s1.addPoint(0, 0);
 	this->addLine(&s1);
 
-	this->line()->color = BLUE;
+	this->line()->color = BLACK;
 }
 
 Player::~Player()
@@ -38,11 +38,7 @@ void Player::update(float deltaTime)
 	rect.x = this->position.x;
 	rect.y = this->position.y;
 
-
-
-	//std::cout << this->position << std::endl;
-	//std::cout << platform.rect.x<< std::endl;
-	//std::cout << isColliding << std::endl;
+	AddGravity();
 }
 
 void Player::CheckCollision(Platform* p) {
@@ -52,4 +48,8 @@ void Player::CheckCollision(Platform* p) {
 		this->line()->color = RED;
 	}
 	//std::cout << isColliding << std::endl;
+}
+
+void Player::AddGravity() {
+	this->position.y += 1;
 }

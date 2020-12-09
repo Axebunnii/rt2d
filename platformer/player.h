@@ -19,14 +19,21 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
-	void CheckCollision(Platform* p);
+	void AddGravity();
 
+	void CheckCollision(Platform* p);
 
 
 private:
 	/* add your private declarations */
 	bool isColliding = false;
 	Rectangle rect = Rectangle(this->position.x, this->position.y, 150, 200);
+
+	float mass;		//player mass
+	Vector2 pos;		//player position
+	Vector2 gravity;	//9.81f Gravity of Earth
+	Vector2 vel;		//velocity
+	Vector2 acc;		//acceleration
 };
 
 #endif /* PLAYER_H */
