@@ -15,6 +15,8 @@ Player::Player() : Entity()
 	this->addLine(&s1);
 
 	this->line()->color = BLACK;
+
+	jumpspd = 0;
 }
 
 Player::~Player()
@@ -48,30 +50,43 @@ void Player::CheckCollision(Platform* p) {
 		isColliding = true;
 		this->line()->color = RED;
 	}
-	//std::cout << isColliding << std::endl;
+	else {
+		isColliding = false;
+	}
+	std::cout << isColliding << std::endl;
 }
 
 void Player::AddGravity() {
 	if (!isColliding) {
-		//this->position.y += gravity;
+		this->position.y += gravity - jumpspd;
 	}
 }
 
 void Player::Jump() {
+
 	if (input()->getKeyDown(KeyCode::Space)) {
-		if (isColliding && !isJumping) {
+		std::cout << "Jump" << std::endl;
+		isJumping = true;
+		jumpspd = 10;
+		/*if (!isJumping) {
+			jumpspd = 5;
+			isJumping = true;
+		}*/
+		/*if (isColliding && !isJumping) {
 			isColliding = false;
 			isJumping = true;
 			jumpPos.y = this->position.y;
 			jumpLimit.y = jumpPos.y - 10;
-		}
-	}
-
-	if (isJumping && this->position.y <= jumpLimit.y) {
-		this->position.y -= gravity;
+			std::cout << "is jumping: " << isJumping << std::endl;
+			std::cout << "is colliding: " << isColliding << std::endl;
+		}*/
 	}
 	else {
-		this->position.y += gravity;
+		isJumping = false;
+	}
+
+	if (jumpspd > 0) {
+		jumpspd -= 0.1f;
 	}
 
 	/*vel.y = 0.001f;

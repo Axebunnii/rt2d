@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 #include <rt2d/entity.h>
-#include <math.h>
 #include "collision.h"
 #include "platform.h"
 
@@ -31,6 +30,7 @@ private:
 	Rectangle rect = Rectangle(this->position.x - 75, this->position.y - 100, 150, 200);
 	bool isColliding = false;
 	bool isJumping = false;
+	float jumpspd;
 	Vector2 jumpPos;		//jump start position
 	Vector2 jumpLimit;		//jump height limit
 	Vector2 acc;			//acceleration
