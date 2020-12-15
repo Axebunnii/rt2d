@@ -24,7 +24,6 @@ public:
 private:
 	/* add your private declarations */
 
-	bool isdeleted = false;
 
 };
 

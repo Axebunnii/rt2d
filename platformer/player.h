@@ -19,11 +19,11 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
-	void AddGravity();
+	void AddGravity(float deltaTime);
 
 	void CheckCollision(Platform* p);
 
-	void Jump();
+	void Jump(float deltaTime);
 
 private:
 	/* add your private declarations */
@@ -31,12 +31,6 @@ private:
 	bool isColliding = false;
 	bool isJumping = false;
 	float jumpspd;
-	Vector2 jumpPos;		//jump start position
-	Vector2 jumpLimit;		//jump height limit
-	Vector2 acc;			//acceleration
-	Vector2 vel;			//velocity
-	Vector2 maxvel;			//maximal velocity
-	float mass = 1;
 	float gravity = 0.981f;
 };
 
