@@ -39,7 +39,7 @@ private:
 	Background* background;
 	Player* player;
 
-	float randomTime = std::rand() % 5;
+	float randomTime = std::rand() % 2;
 };
 
 #endif /* SCENE00_H */
