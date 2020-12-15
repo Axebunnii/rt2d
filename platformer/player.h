@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <rt2d/entity.h>
+#include <math.h>
 #include "collision.h"
 #include "platform.h"
 
@@ -23,17 +24,20 @@ public:
 
 	void CheckCollision(Platform* p);
 
+	void Jump();
 
 private:
 	/* add your private declarations */
+	Rectangle rect = Rectangle(this->position.x - 75, this->position.y - 100, 150, 200);
 	bool isColliding = false;
-	Rectangle rect = Rectangle(this->position.x, this->position.y, 150, 200);
-
-	float mass;		//player mass
-	Vector2 pos;		//player position
-	Vector2 gravity;	//9.81f Gravity of Earth
-	Vector2 vel;		//velocity
-	Vector2 acc;		//acceleration
+	bool isJumping = false;
+	Vector2 jumpPos;		//jump start position
+	Vector2 jumpLimit;		//jump height limit
+	Vector2 acc;			//acceleration
+	Vector2 vel;			//velocity
+	Vector2 maxvel;			//maximal velocity
+	float mass = 1;
+	float gravity = 0.981f;
 };
 
 #endif /* PLAYER_H */

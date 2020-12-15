@@ -15,16 +15,20 @@ MyScene::MyScene() : Scene()
 
 	// start the timer.
 	t.start();
-	pt.start();
 
 	background = new Background();
 	background->position = Point2(SWIDTH/2, SHEIGHT/2);
 
 	this->addChild(background);
 
+	strtpltfrm = new Platform();
+	strtpltfrm->position = Point2(SWIDTH / 2 + SWIDTH / 8, SHEIGHT / 2);
+	strtpltfrm->scale = Point(4, 1);
+	this->addChild(strtpltfrm);
+
 	//player
 	player = new Player();
-	player->position = Point2(SWIDTH/2, SHEIGHT/2);
+	player->position = Point2(SWIDTH/2, SHEIGHT/2 - SHEIGHT/4);
 
 	this->addChild(player);
 }
@@ -34,6 +38,9 @@ MyScene::~MyScene()
 {
 	this->removeChild(background);
 	delete background;
+
+	this->removeChild(strtpltfrm);
+	delete strtpltfrm;
 
 	this->removeChild(player);
 	delete player;
@@ -53,8 +60,10 @@ void MyScene::update(float deltaTime)
 		this->stop();
 	}
 
-	if (pt.seconds() > randomTime) {
-		pt.start();
+	player->CheckCollision(strtpltfrm);
+
+	if (t.seconds() > randomTime) {
+		t.start();
 
 		Platform* platform = new Platform();
 		platform->position = Point2(SWIDTH + 100, std::rand() % SHEIGHT/3 + SHEIGHT / 4);

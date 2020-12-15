@@ -39,6 +39,7 @@ void Player::update(float deltaTime)
 	rect.y = this->position.y;
 
 	AddGravity();
+	Jump();
 }
 
 void Player::CheckCollision(Platform* p) {
@@ -51,5 +52,49 @@ void Player::CheckCollision(Platform* p) {
 }
 
 void Player::AddGravity() {
-	this->position.y += 1;
+	if (!isColliding) {
+		//this->position.y += gravity;
+	}
+}
+
+void Player::Jump() {
+	if (input()->getKeyDown(KeyCode::Space)) {
+		if (isColliding && !isJumping) {
+			isColliding = false;
+			isJumping = true;
+			jumpPos.y = this->position.y;
+			jumpLimit.y = jumpPos.y - 10;
+		}
+	}
+
+	if (isJumping && this->position.y <= jumpLimit.y) {
+		this->position.y -= gravity;
+	}
+	else {
+		this->position.y += gravity;
+	}
+
+	/*vel.y = 0.001f;
+	if (input()->getKey(KeyCode::Space)) {
+		std::cout << "Jump" << std::endl;
+
+		pos = this->position;
+
+		vel.y *= 1.5;
+		//acc = 
+
+		//std::cout << this->position << std::endl;
+		/*pos = this->position;
+		vel.y += 5;
+		acc.y += 0;
+
+		vel.y += acc.y;
+		pos.y += vel.y;
+
+		acc.y *= 0;*/
+		
+		//vel.y = -sqrtf(2.0f * 981.0f * jumpheight);
+		//pos.y -= vel.y;
+
+		//this->position.y -= pos.y;
 }

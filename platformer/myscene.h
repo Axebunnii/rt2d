@@ -33,9 +33,9 @@ public:
 private:
 
 	Timer t;
-	Timer pt;
 
 	std::vector<Platform*> platforms;
+	Platform* strtpltfrm;
 	Background* background;
 	Player* player;
 
