@@ -48,7 +48,7 @@ void Player::CheckCollision(Platform* p) {
 
 void Player::AddGravity(float deltaTime) {
 	if (!isColliding) {
-		this->position.y += gravity - jumpspd;
+		this->position.y += gravity - jumpspd * deltaTime;
 	}
 }
 
@@ -57,7 +57,7 @@ void Player::Jump(float deltaTime) {
 	if (input()->getKeyDown(KeyCode::Space)) {
 		std::cout << "Jump" << std::endl;
 		isJumping = true;
-		jumpspd = 10;
+		jumpspd = 1500;
 	}
 
 	else {
@@ -65,6 +65,6 @@ void Player::Jump(float deltaTime) {
 	}
 
 	if (jumpspd > 0) {
-		jumpspd -= 0.1f;
+		jumpspd -= 1000 * deltaTime;
 	}
 }
