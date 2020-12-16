@@ -26,7 +26,7 @@ Platform::~Platform()
 
 void Platform::update(float deltaTime)
 {
-	this->position -= Point2(0.7, 0);
+	this->position -= Point2(400, 0) * deltaTime;
 
 	rect.x = this->position.x;
 	rect.y = this->position.y;
