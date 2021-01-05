@@ -23,8 +23,14 @@ MyScene::MyScene() : Scene()
 
 	strtpltfrm = new Platform();
 	strtpltfrm->position = Point2(SWIDTH / 2 + SWIDTH / 8, SHEIGHT / 2);
-	strtpltfrm->scale = Point(4, 1);
+	//strtpltfrm->scale = Point(4, 1);
 	this->addChild(strtpltfrm);
+	platforms.push_back(strtpltfrm);
+
+	strtpltfrm2 = new Platform();
+	strtpltfrm2->position = Point2(SWIDTH / 2 + SWIDTH / 2, SHEIGHT / 2);
+	this->addChild(strtpltfrm2);
+	platforms.push_back(strtpltfrm2);
 
 	//player
 	player = new Player();
@@ -39,8 +45,8 @@ MyScene::~MyScene()
 	this->removeChild(background);
 	delete background;
 
-	this->removeChild(strtpltfrm);
-	delete strtpltfrm;
+	//this->removeChild(strtpltfrm);
+	//delete strtpltfrm;
 
 	this->removeChild(player);
 	delete player;
@@ -60,7 +66,7 @@ void MyScene::update(float deltaTime)
 		this->stop();
 	}
 
-	player->CheckCollision(strtpltfrm);
+	//player->CheckCollision(strtpltfrm);
 
 	if (t.seconds() > randomTime) {
 		t.start();
@@ -72,7 +78,8 @@ void MyScene::update(float deltaTime)
 		platforms.push_back(platform);
 	}
 
-	for (int i = 0; i < platforms.size(); i++) {
+	/*for (int i = 0; i < platforms.size(); i++) {
 		player->CheckCollision(platforms[i]);
-	}
+	}*/
+	player->CheckCollision(platforms);
 }

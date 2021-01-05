@@ -21,13 +21,13 @@ public:
 
 	void AddGravity(float deltaTime);
 
-	void CheckCollision(Platform* p);
+	void CheckCollision(std::vector<Platform*>& platformlist);
 
 	void Jump(float deltaTime);
 
 private:
 	/* add your private declarations */
-	Rectangle rect = Rectangle(this->position.x - 75, this->position.y - 100, 150, 200);
+	Rectangle rect = Rectangle(this->position.x, this->position.y, 150, 130);
 	bool isColliding = false;
 	bool isJumping = false;
 	float jumpspd;

@@ -34,32 +34,34 @@ void Player::update(float deltaTime)
 	Jump(deltaTime);
 }
 
-void Player::CheckCollision(Platform* p) {
-
-	if (Collision::rectangle2rectangle(rect, p->rect)) {
-		isColliding = true;
-		this->line()->color = RED;
+void Player::CheckCollision(std::vector<Platform*>& platformlist) {
+	isColliding = false;
+	this->line()->color = BLACK;
+	for (int i = 0; i < platformlist.size(); i++) {
+		if (Collision::rectangle2rectangle(rect, platformlist[i]->rect)) {
+			isColliding = true;
+			this->line()->color = RED;
+			break;
+		}
 	}
-	else {
-		isColliding = false;
-	}
-	//std::cout << isColliding << std::endl;
 }
 
 void Player::AddGravity(float deltaTime) {
 	if (!isColliding) {
-		this->position.y += gravity - jumpspd * deltaTime;
+		//this->position.y += gravity - jumpspd * deltaTime;
+		this->position.y += gravity;
 	}
 }
 
 void Player::Jump(float deltaTime) {
-
 	if (input()->getKeyDown(KeyCode::Space)) {
-		std::cout << "Jump" << std::endl;
-		isJumping = true;
-		jumpspd = 1500;
+		if (isColliding) {
+			std::cout << "Jump" << std::endl;
+			isJumping = true;
+			jumpspd = 1400;
+		}
+		
 	}
-
 	else {
 		isJumping = false;
 	}
@@ -67,4 +69,5 @@ void Player::Jump(float deltaTime) {
 	if (jumpspd > 0) {
 		jumpspd -= 1000 * deltaTime;
 	}
+	this->position.y -= jumpspd * deltaTime;
 }

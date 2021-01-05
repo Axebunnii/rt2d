@@ -31,11 +31,11 @@ public:
 	virtual void update(float deltaTime);
 
 private:
-
 	Timer t;
 
 	std::vector<Platform*> platforms;
 	Platform* strtpltfrm;
+	Platform* strtpltfrm2;
 	Background* background;
 	Player* player;
 
