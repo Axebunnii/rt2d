@@ -183,6 +183,8 @@ IF(MAKE_PLATFORMER)
 		platformer/collision.h
 		platformer/background.cpp
 		platformer/background.h
+		platfromer/arrow.cpp
+		platfromer/arrow.h
 	)
 	target_link_libraries(platformer
 		${ALL_GRAPHICS_LIBS}
