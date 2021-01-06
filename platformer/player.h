@@ -24,14 +24,16 @@ public:
 	void CheckCollision(std::vector<Platform*>& platformlist);
 
 	void Jump(float deltaTime);
+	void Shoot();
 
 private:
 	/* add your private declarations */
+	//MyScene* scene;
 	Rectangle rect = Rectangle(this->position.x, this->position.y, 150, 130);
 	bool isColliding = false;
 	bool isJumping = false;
 	float jumpspd;
-	float gravity = 0.981f;
+	float gravity = 400;
 };
 
 #endif /* PLAYER_H */

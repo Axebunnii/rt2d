@@ -15,6 +15,7 @@
 #include "player.h"
 #include "collision.h"
 #include "background.h"
+#include "arrow.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -30,14 +31,18 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
+	void SpawnArrow();
+
 private:
 	Timer t;
 
 	std::vector<Platform*> platforms;
+	std::vector<Arrow*> arrows;
 	Platform* strtpltfrm;
 	Platform* strtpltfrm2;
 	Background* background;
 	Player* player;
+	Arrow* arrow;
 
 	float randomTime = std::rand() % 2;
 };

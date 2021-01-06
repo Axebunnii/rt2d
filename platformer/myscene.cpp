@@ -83,3 +83,11 @@ void MyScene::update(float deltaTime)
 	}*/
 	player->CheckCollision(platforms);
 }
+
+void MyScene::SpawnArrow() {
+	Arrow* a = new Arrow();
+	a->position = Point2(player->position.x, player->position.y);
+
+	this->addChild(a);
+	arrows.push_back(a);
+}

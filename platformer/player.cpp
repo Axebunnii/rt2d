@@ -32,6 +32,7 @@ void Player::update(float deltaTime)
 
 	AddGravity(deltaTime);
 	Jump(deltaTime);
+	Shoot();
 }
 
 void Player::CheckCollision(std::vector<Platform*>& platformlist) {
@@ -49,7 +50,7 @@ void Player::CheckCollision(std::vector<Platform*>& platformlist) {
 void Player::AddGravity(float deltaTime) {
 	if (!isColliding) {
 		//this->position.y += gravity - jumpspd * deltaTime;
-		this->position.y += gravity;
+		this->position.y += gravity * deltaTime;
 	}
 }
 
@@ -58,7 +59,7 @@ void Player::Jump(float deltaTime) {
 		if (isColliding) {
 			std::cout << "Jump" << std::endl;
 			isJumping = true;
-			jumpspd = 1400;
+			jumpspd = 1000;
 		}
 		
 	}
@@ -70,4 +71,13 @@ void Player::Jump(float deltaTime) {
 		jumpspd -= 1000 * deltaTime;
 	}
 	this->position.y -= jumpspd * deltaTime;
+}
+
+//player has shoot function that calls myscene
+//cant call myscene to the player, bc player gets already called by myscene
+void Player::Shoot() {
+	if (input()->getKeyUp(KeyCode::LeftShift)) {
+		std::cout << "Shooting arrow" << std::endl;
+		//scene->SpawnArrow();
+	}
 }
