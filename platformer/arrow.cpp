@@ -16,13 +16,13 @@ Arrow::~Arrow()
 void Arrow::update(float deltaTime)
 {
 	if (arrowSpd != 0) {
-		arrowSpd -= 2.5f;
+		arrowSpd -= 2;
 	}
 
 	this->position.x += arrowSpd * deltaTime;
 
 	
-	shootSpd -= 5;
+	shootSpd -= 4;
 
 	this->position.y -= shootSpd * deltaTime;
 	this->position.y += gravity * deltaTime;
