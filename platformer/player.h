@@ -4,6 +4,7 @@
 #include <rt2d/entity.h>
 #include "collision.h"
 #include "platform.h"
+#include "arrow.h"
 
 /// @brief The MyEntity class is the Entity implementation.
 class Player : public Entity
@@ -24,11 +25,10 @@ public:
 	void CheckCollision(std::vector<Platform*>& platformlist);
 
 	void Jump(float deltaTime);
-	void Shoot();
+	Arrow* Shoot();
 
 private:
 	/* add your private declarations */
-	//MyScene* scene;
 	Rectangle rect = Rectangle(this->position.x, this->position.y, 150, 130);
 	bool isColliding = false;
 	bool isJumping = false;

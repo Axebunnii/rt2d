@@ -5,7 +5,7 @@
 
 Arrow::Arrow() : Scene()
 {
-	this->addSprite("assets/platform.tga");
+	this->addSprite("assets/arrow.tga");
 }
 
 Arrow::~Arrow()
@@ -15,8 +15,17 @@ Arrow::~Arrow()
 
 void Arrow::update(float deltaTime)
 {
+	if (arrowSpd != 0) {
+		arrowSpd -= 2.5f;
+	}
+
 	this->position.x += arrowSpd * deltaTime;
 
-	//give the arrow gravity
+	
+	shootSpd -= 5;
+
+	this->position.y -= shootSpd * deltaTime;
 	this->position.y += gravity * deltaTime;
+
+	this->rotation.z += 0.001;
 }

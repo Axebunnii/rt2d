@@ -82,12 +82,20 @@ void MyScene::update(float deltaTime)
 		player->CheckCollision(platforms[i]);
 	}*/
 	player->CheckCollision(platforms);
+
+	SpawnArrow();
 }
 
 void MyScene::SpawnArrow() {
-	Arrow* a = new Arrow();
-	a->position = Point2(player->position.x, player->position.y);
+	if (input()->getKeyUp(KeyCode::LeftShift)) {
+		std::cout << "Shooting arrow" << std::endl;
+		Arrow* a = new Arrow();
+		a->position = Point2(player->position.x, player->position.y);
+		a->rotation.z = 25;
 
-	this->addChild(a);
-	arrows.push_back(a);
+		this->addChild(a);
+		arrows.push_back(a);
+
+		//arrows.push_back(player->Shoot());
+	}
 }

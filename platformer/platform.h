@@ -18,7 +18,7 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
-	Rectangle rect = Rectangle(this->position.x + 125, this->position.y + 25, 125, 50);
+	Rectangle rect = Rectangle(this->position.x -125, this->position.y, 125, 50);
 
 
 private:

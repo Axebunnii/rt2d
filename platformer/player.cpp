@@ -61,7 +61,6 @@ void Player::Jump(float deltaTime) {
 			isJumping = true;
 			jumpspd = 1000;
 		}
-		
 	}
 	else {
 		isJumping = false;
@@ -73,11 +72,7 @@ void Player::Jump(float deltaTime) {
 	this->position.y -= jumpspd * deltaTime;
 }
 
-//player has shoot function that calls myscene
-//cant call myscene to the player, bc player gets already called by myscene
-void Player::Shoot() {
-	if (input()->getKeyUp(KeyCode::LeftShift)) {
-		std::cout << "Shooting arrow" << std::endl;
-		//scene->SpawnArrow();
-	}
+Arrow* Player::Shoot() {
+	Arrow* a = new Arrow();
+	return a;
 }

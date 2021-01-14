@@ -18,7 +18,8 @@ public:
 	virtual void update(float deltaTime);
 
 private:
-	float arrowSpd = 100;
+	float arrowSpd = 1500;
+	float shootSpd = 1000;
 	float gravity = 9.81f;
 };
 
