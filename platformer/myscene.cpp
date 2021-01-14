@@ -55,6 +55,11 @@ MyScene::~MyScene()
 		this->removeChild(platforms[i]);
 		delete platforms[i];
 	}
+
+	for (int i = 0; i < arrows.size(); i++) {
+		this->removeChild(arrows[i]);
+		delete arrows[i];
+	}
 }
 
 void MyScene::update(float deltaTime)
