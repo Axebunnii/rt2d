@@ -16,6 +16,7 @@
 #include "collision.h"
 #include "background.h"
 #include "arrow.h"
+#include "enemy.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -32,6 +33,7 @@ public:
 	virtual void update(float deltaTime);
 
 	void SpawnArrow();
+	void SpawnEnemy();
 
 private:
 	Timer t;
@@ -43,6 +45,7 @@ private:
 	Background* background;
 	Player* player;
 	Arrow* arrow;
+	Enemy* enemy;
 
 	float randomTime = std::rand() % 2;
 };
