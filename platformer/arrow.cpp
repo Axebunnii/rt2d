@@ -22,10 +22,10 @@ void Arrow::update(float deltaTime)
 	this->position.x += arrowSpd * deltaTime;
 
 	
-	shootSpd -= 4;
+	shootSpd -= 8;
 
 	this->position.y -= shootSpd * deltaTime;
 	this->position.y += gravity * deltaTime;
 
-	this->rotation.z += 0.001;
+	this->rotation.z += 0.002;
 }

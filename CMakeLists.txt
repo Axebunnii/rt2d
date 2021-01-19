@@ -185,6 +185,8 @@ IF(MAKE_PLATFORMER)
 		platformer/background.h
 		platformer/arrow.cpp
 		platformer/arrow.h
+		platformer/enemy.cpp
+		platformer/enemy.h
 	)
 	target_link_libraries(platformer
 		${ALL_GRAPHICS_LIBS}
