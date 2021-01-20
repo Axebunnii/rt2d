@@ -15,6 +15,7 @@ MyScene::MyScene() : Scene()
 
 	// start the timer.
 	t.start();
+	et.start();
 
 	background = new Background();
 	background->position = Point2(SWIDTH/2, SHEIGHT/2);
@@ -37,10 +38,6 @@ MyScene::MyScene() : Scene()
 	player->position = Point2(SWIDTH/2, SHEIGHT/2 - SHEIGHT/4);
 
 	this->addChild(player);
-
-	enemy= new Enemy();
-
-	this->addChild(enemy);
 }
 
 
@@ -65,8 +62,11 @@ MyScene::~MyScene()
 		delete arrows[i];
 	}
 
-	this->removeChild(enemy);
-	delete enemy;
+	for (int i = 0; i < enemies.size(); i++) {
+		this->removeChild(enemies[i]);
+		delete enemies[i];
+	}
+	
 }
 
 void MyScene::update(float deltaTime)
@@ -96,14 +96,17 @@ void MyScene::update(float deltaTime)
 	player->CheckCollision(platforms);
 
 	SpawnArrow();
-	enemy->MoveEnemy(deltaTime, player->position);
+	SpawnEnemy();
+	for (int i = 0; i < enemies.size(); i++) {
+		enemies[i]->MoveEnemy(deltaTime, player->position);
+	}
 }
 
 void MyScene::SpawnArrow() {
-	if (input()->getKeyUp(KeyCode::N)) {
+	if (input()->getKeyUp(KeyCode::E)) {
 		std::cout << "Shooting arrow" << std::endl;
 		Arrow* a = new Arrow();
-		a->position = Point2(player->position.x, player->position.y);
+		a->position = Point2(player->position.x, player->position.y + 75);
 		a->rotation.z = 25;
 
 		this->addChild(a);
@@ -113,6 +116,14 @@ void MyScene::SpawnArrow() {
 	}
 }
 
-void SpawnEnemy() {
-
+void MyScene::SpawnEnemy() {
+	if (et.seconds() > 10) {
+		std::cout << et.seconds() << std::endl;
+		et.start();
+		
+		Enemy* e = new Enemy();
+		
+		this->addChild(e);
+		enemies.push_back(e);
+	}
 }

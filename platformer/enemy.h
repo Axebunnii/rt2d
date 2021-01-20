@@ -2,6 +2,7 @@
 #define ENEMY_H
 
 #include <rt2d/entity.h>
+#include "collision.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class Enemy : public Entity
@@ -21,9 +22,9 @@ public:
 
 
 private:
-	//Point2 playerPos = Point2(Player.position.x, Player.position.y)
+	Rectangle rect = Rectangle(this->position.x, this->position.y, 50, 50);
 	Point2 distance;
-	float spd = 0.6;
+	float spd = 0.5;
 };
 
 #endif /* ENEMY_H */

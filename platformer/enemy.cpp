@@ -6,7 +6,7 @@
 Enemy::Enemy() : Entity()
 {
 	this->addSprite("assets/enemy.tga");
-	this->position = Point2(SWIDTH, 0);
+	this->position = Point2(SWIDTH + SWIDTH/2, 0);
 }
 
 Enemy::~Enemy()
@@ -16,12 +16,11 @@ Enemy::~Enemy()
 
 void Enemy::update(float deltaTime)
 {
-
+	
 }
 
 void Enemy::MoveEnemy(float deltaTime, Point2 playerpos)
 {
 	distance = this->position - playerpos;
-	std::cout << "distance: " << distance << std::endl;
-	this->position -= (distance * spd) *deltaTime;
+	this->position -= (distance * spd) * deltaTime;
 }

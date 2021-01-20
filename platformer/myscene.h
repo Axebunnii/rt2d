@@ -37,9 +37,11 @@ public:
 
 private:
 	Timer t;
+	Timer et;
 
 	std::vector<Platform*> platforms;
 	std::vector<Arrow*> arrows;
+	std::vector<Enemy*> enemies;
 	Platform* strtpltfrm;
 	Platform* strtpltfrm2;
 	Background* background;
