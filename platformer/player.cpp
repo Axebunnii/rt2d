@@ -76,3 +76,14 @@ Arrow* Player::Shoot() {
 	Arrow* a = new Arrow();
 	return a;
 }
+
+void Player::CheckEnemyHit(std::vector<Enemy*>& enemylist) {
+	std::cout << "Check enemy hit" << std::endl;
+	for (int i = 0; i < enemylist.size(); i++) {
+		std::cout << "Check enemy hit: for" << std::endl;
+		if (Collision::rectangle2rectangle(rect, enemylist[i]->rect)) {
+			std::cout << "enemy hit player" << std::endl;
+			break;
+		}
+	}
+}

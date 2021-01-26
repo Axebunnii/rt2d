@@ -20,9 +20,9 @@ public:
 
 	void MoveEnemy(float deltaTime, Point2 playerPos);
 
+	Rectangle rect = Rectangle(this->position.x, this->position.y, 150, 150);
 
 private:
-	Rectangle rect = Rectangle(this->position.x, this->position.y, 50, 50);
 	Point2 distance;
 	float spd = 0.5;
 };

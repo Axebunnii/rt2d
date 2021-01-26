@@ -46,9 +46,6 @@ MyScene::~MyScene()
 	this->removeChild(background);
 	delete background;
 
-	//this->removeChild(strtpltfrm);
-	//delete strtpltfrm;
-
 	this->removeChild(player);
 	delete player;
 	
@@ -66,7 +63,6 @@ MyScene::~MyScene()
 		this->removeChild(enemies[i]);
 		delete enemies[i];
 	}
-	
 }
 
 void MyScene::update(float deltaTime)
@@ -111,12 +107,11 @@ void MyScene::SpawnArrow() {
 
 		this->addChild(a);
 		arrows.push_back(a);
-
-		//arrows.push_back(player->Shoot());
 	}
 }
 
 void MyScene::SpawnEnemy() {
+	std::cout << "Spawn Enemy" << std::endl;
 	if (et.seconds() > 10) {
 		std::cout << et.seconds() << std::endl;
 		et.start();
@@ -126,4 +121,5 @@ void MyScene::SpawnEnemy() {
 		this->addChild(e);
 		enemies.push_back(e);
 	}
+	player->CheckEnemyHit(enemies);
 }

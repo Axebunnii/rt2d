@@ -5,6 +5,7 @@
 #include "collision.h"
 #include "platform.h"
 #include "arrow.h"
+#include "enemy.h"
 
 /// @brief The MyEntity class is the Entity implementation.
 class Player : public Entity
@@ -26,6 +27,7 @@ public:
 
 	void Jump(float deltaTime);
 	Arrow* Shoot();
+	void CheckEnemyHit(std::vector<Enemy*>& enemylist);
 
 private:
 	/* add your private declarations */

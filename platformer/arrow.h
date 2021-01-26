@@ -16,6 +16,7 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
+	void Move(float deltaTime);
 
 private:
 	float arrowSpd = 1500;
