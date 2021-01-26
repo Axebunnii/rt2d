@@ -26,8 +26,9 @@ public:
 	void CheckCollision(std::vector<Platform*>& platformlist);
 
 	void Jump(float deltaTime);
-	Arrow* Shoot();
+	//Arrow* Shoot();
 	void CheckEnemyHit(std::vector<Enemy*>& enemylist);
+
 
 private:
 	/* add your private declarations */

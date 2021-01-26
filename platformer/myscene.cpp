@@ -112,7 +112,7 @@ void MyScene::SpawnArrow() {
 
 void MyScene::SpawnEnemy() {
 	std::cout << "Spawn Enemy" << std::endl;
-	if (et.seconds() > 10) {
+	if (et.seconds() > 5) {
 		std::cout << et.seconds() << std::endl;
 		et.start();
 		
